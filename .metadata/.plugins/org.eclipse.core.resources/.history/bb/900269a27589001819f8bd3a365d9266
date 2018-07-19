@@ -1,0 +1,32 @@
+package com.twosuccess.bootcamp2018.model;
+
+public class ItemQuestion {
+	String itemGroupName;
+	int itemNo;
+	String itemDescription;
+	public String getItemGroupName() {
+		return itemGroupName;
+	}
+	public void setItemGroupName(String itemGroupName) {
+		this.itemGroupName = itemGroupName;
+	}
+	public int getItemNo() {
+		return itemNo;
+	}
+	public void setItemNo(int itemNo) {
+		this.itemNo = itemNo;
+	}
+	public String getItemDescription() {
+		return itemDescription;
+	}
+	public void setItemDescription(String itemDescription) {
+		this.itemDescription = itemDescription;
+	}
+	@Override
+	public String toString() {
+		return  itemGroupName + "," + itemNo + ","
+				+ itemDescription;
+	}
+	
+	
+}

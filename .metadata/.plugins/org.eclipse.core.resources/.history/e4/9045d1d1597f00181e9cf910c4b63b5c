@@ -1,0 +1,15 @@
+package idv.camille;
+
+public class secondService {
+	
+private IfTransportation van;
+	
+//setter injections
+	public void setAService(IfTransportation van) {
+		this.van = van;
+	}
+	
+	public void exec() {
+			van.travel();
+	}
+}

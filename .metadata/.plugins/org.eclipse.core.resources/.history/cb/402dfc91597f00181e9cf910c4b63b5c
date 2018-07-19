@@ -1,0 +1,16 @@
+package idv.camille;
+
+public class thirdService {
+	
+	private static IfTransportation train;
+
+
+	//Constructor injection
+	public thirdService (IfTransportation train) {
+		this.train = train;
+	}
+	
+	public void test() {
+		train.execute();
+	}
+}

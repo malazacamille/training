@@ -1,0 +1,8 @@
+package com.training.bean;
+
+public class Account {
+	
+	private String accountId;
+	private String username;
+	private String password;
+}

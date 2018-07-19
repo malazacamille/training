@@ -1,0 +1,105 @@
+package com.twosuccess.bootcamp2018.action;
+
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.google.common.io.Resources;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.opensymphony.xwork2.Action;
+import com.twosuccess.bootcamp2018.model.Employee;
+import com.twosuccess.bootcamp2018.modules.EmployeeModule;
+import com.twosuccess.bootcamp2018.modules.LoginModule;
+import com.twosuccess.bootcamp2018.services.EmployeeService;
+import com.twosuccess.bootcamp2018.services.LoginService;
+
+public class WelcomeUserAction implements SessionAware{
+	
+	private String username;
+	private String password;
+	private EmployeeService employeeService;
+	private LoginService loginService;
+	private Injector injector;
+	private Injector injector2;
+	private List<Employee> listEmployee;
+	private Map<String, Object> sessionMap;
+	 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public List<Employee> getListEmployee() {
+		return listEmployee;
+	}
+
+	public void setListEmployee(List<Employee> listEmployee) {
+		this.listEmployee = listEmployee;
+	}
+
+	// all struts logic here
+	public String execute() {
+		injector = Guice.createInjector(new EmployeeModule());
+		injector2 = Guice.createInjector(new LoginModule());
+		employeeService = injector.getInstance(EmployeeService.class);
+		loginService = injector2.getInstance(LoginService.class);
+		listEmployee = employeeService.selectAll();
+		
+		String loggedUserName = null;
+		
+		String workingDir = System.getProperty("user.dir");
+		System.out.println(workingDir);
+		
+		boolean result = loginService.validate(username, password);
+		
+		
+		//check if username is already in session
+		if(sessionMap.containsKey("username")) {
+			loggedUserName  = (String) sessionMap.get("username");
+			if(loggedUserName != null) {
+				return "SUCCESS";
+			}
+		}
+		
+		//check if username is in session, if no check the username and password
+		if(username != null && result == true) {
+			//add username to session
+			sessionMap.put("username", username);
+			return "SUCCESS";
+		}
+		
+		//else
+		return "FAILED";
+	}
+	
+	public String logout() {
+		// remove userNname from the session
+        if (sessionMap.containsKey("username")) {
+            sessionMap.remove("username");
+        }
+        
+        return "SUCCESS";
+	}
+
+	@Override
+	public void setSession(Map<String, Object> sessionMap) {
+		this.sessionMap = sessionMap;
+	}
+	
+}

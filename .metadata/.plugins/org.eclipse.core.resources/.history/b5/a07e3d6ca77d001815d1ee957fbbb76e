@@ -1,0 +1,21 @@
+package com.bootcamp;
+
+public class Calculator {
+	
+	public double add(double number1, double number2) {
+		return a + b;
+	}
+	
+	public double subtract(double number1, double number2) {
+		return a - b;
+	}
+	
+	public double multiply(double number1, double number2) {
+		return a  *b;
+	}
+	
+	public double divide(double number1, double number2) {
+		return a / b;
+	}
+	
+}

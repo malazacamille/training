@@ -1,0 +1,18 @@
+package com.twosuccess.bootcamp2018.daoimp;
+
+import java.util.List;
+
+import com.twosuccess.bootcamp2018.dao.QuestionDAO;
+import com.twosuccess.bootcamp2018.model.ItemQuestion;
+
+public class QuestionDAOImp implements QuestionDAO {
+
+	@Override
+	public List<ItemQuestion> selectAll(int itemGroupNumber) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+}

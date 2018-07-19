@@ -1,0 +1,11 @@
+package idv.camille.MyDemo;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class AService {
+
+	public void execute() {
+		System.out.println("AService is running");
+	}
+}

@@ -1,0 +1,953 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>EMS | Home</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/src/dist/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="assets/src/plugins/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="assets/src/dist/css/adminlte.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="assets/src/plugins/iCheck/flat/blue.css">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="assets/src/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="assets/src/plugins/datatables/dataTables.bootstrap4.css">
+	<link rel="stylesheet" href="/GuiceWebProject/src/main/webapp/User/assets/css/w3.css">
+  <link rel="stylesheet" type="text/css" href="assets/datatables/datatables.min.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script src="assets/js/jquery-ui.min.js"></script>
+  <script src="assets/datatables/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+  <script type="text/javascript" src="assets/datatables/vfs_fonts.js"></script>
+  <script type="text/javascript" src="assets/datatables/datatables.min.js"></script> 
+	<script type="text/javascript">
+	  history.pushState(null, null, location.href);
+	  window.onpopstate = function () {
+	      history.go(1);
+	  };
+	 </script>
+	<style>
+
+		#regForm {
+		  background-color: #ffffff;
+/* 		  margin: 100px auto; */
+		  font-family: Raleway;
+		  padding: 40px;
+/* 		  width: 70%; */
+		  min-width: 300px;
+		}
+		
+		h1 {
+		  text-align: center;  
+		}
+		
+		input {
+		  padding: 10px;
+		  width: 100%;
+		  font-size: 17px;
+		  font-family: Raleway;
+		  border: 1px solid #aaaaaa;
+		}
+		
+		/* Mark input boxes that gets an error on validation: */
+		input.invalid {
+		  background-color: #ffdddd;
+		}
+		
+		/* Hide all steps by default: */
+		.tab {
+		  display: none;
+		}
+		
+		button {
+		  background-color: #4CAF50;
+		  color: #ffffff;
+		  border: none;
+		  padding: 10px 20px;
+		  font-size: 17px;
+		  font-family: Raleway;
+		  cursor: pointer;
+		}
+		
+		button:hover {
+		  opacity: 0.8;
+		}
+		
+		#prevBtn {
+		  background-color: #bbbbbb;
+		}
+		
+		/* Make circles that indicate the steps of the form: */
+		.step {
+		  height: 15px;
+		  width: 15px;
+		  margin: 0 2px;
+		  background-color: #bbbbbb;
+		  border: none;  
+		  border-radius: 50%;
+		  display: inline-block;
+		  opacity: 0.5;
+		}
+		
+		.step.active {
+		  opacity: 1;
+		}
+		
+		/* Mark the steps that are finished and valid: */
+		.step.finish {
+		  background-color:#3387E1;
+		}
+	</style>
+	 
+</head>
+
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="Logout" class="nav-link">Logout</a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="Welcome" class="brand-link">
+      <img src="assets/src/dist/employee.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">Employee MS</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+            <li class="nav-item">
+                <a href="#tab_1" data-toggle="tab" class="nav-link active">
+                  <i class="nav-icon fa fa-users"></i>
+                  <p>List of Employees</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#tab_2" data-toggle="tab" class="nav-link">
+                  <i class="nav-icon fa fa-edit"></i>
+                  <p>List of Jobs</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#tab_4" data-toggle="tab" class="nav-link">
+                  <i class="nav-icon fa fa fa-book"></i>
+                  <p>Peer Review</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#tab_3" data-toggle="tab" class="nav-link">
+                  <i class="nav-icon fa fa-question-circle"></i>
+                  <p>About</p>
+                </a>
+            </li>
+            
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+  
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab_1">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">List of employees</h3>
+                              <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#addModal">New Employee</button>
+                            </div>
+                            
+                            <div class="card-body">
+                                <table id="employeeTable" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+							                <th>Name</th>
+							                <th>Address</th>
+							                <th>City</th>
+							                <th>Country</th>
+							                <th>Department</th>
+							                <th>Status</th>
+							                <th></th>
+							                <th></th>
+							            </tr>
+                                    </thead>
+                                    <tbody>
+						            <s:iterator value="listEmployee">
+						                <tr>
+						                    <!-- <td><s:property value="employeeId" /></td>  -->
+						                    <td><s:property value="employeeName" /></td>
+						                    <td><s:property value="address" /></td>
+						                    <td><s:property value="city" /></td>
+						                    <td><s:property value="country" /></td>
+						                    <td><s:property value="departmentId" /></td>
+						                    <td><s:property value="status" /></td> 
+						                    <td>
+							                    <button type="button" class="btn btn-info" 
+							                    emp-id="<s:property value="employeeId"/>" 
+							                    emp-name="<s:property value="employeeName"/>" 
+							                    emp-address="<s:property value="address"/>" 
+							                    city="<s:property value="city" />" 
+							                    country="<s:property value="country" />" 
+							                    dept-id="<s:property value="departmentId"/>" 
+							                    emp-status="<s:property value="status"/>" 
+							                    data-toggle="modal" data-target="#updateModal">
+							                    	<span class="fa fa-edit"></span></button>
+						                  </td>
+						                  <td>
+						                    	<button type="button" emp-id="<s:property value="employeeId"/>" 
+						                    	data-toggle="modal" data-target="#deleteModal"
+						                    	class="btn btn-danger">
+						                    		<span class="fa fa-close"></span></button>
+						                    </td>
+						                </tr>
+						            </s:iterator>
+						            </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-pane" id="tab_2">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">List of jobs</h3>
+                            </div>
+                            <div class="card-body">
+                                <table id="example1" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Job ID</th>
+                                            <th>Description</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Update status of 'Pending' employees to 'Active' or 'Inactive' at 5:00 PM</td>
+                                            <td><center>
+                                                <button onclick="location.href = 'UpdateEmployeeStatus';" type="button" class="btn btn-info">
+			                    	            <span class="fa fa-refresh"></span></button>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-pane" id="tab_3">
+                <div class="content-header">
+                    <div class="row mb-2">
+                        <h1 class="m-0 text-dark">Our Team</h1>
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 offset-md-1">
+                        <div class="card card-primary card-outline">
+                          <div class="card-body box-profile">
+                            <div class="text-center">
+                              <img class="profile-user-img img-fluid img-circle"
+                                   src="assets/src/dist/elze.jpg"
+                                   alt="User profile picture">
+                            </div>
+                            <h3 class="profile-username text-center">Elzecar Casido</h3>
+                            <p class="text-muted text-center">Junior Programmer</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 offset-md-1">
+                        <div class="card card-primary card-outline">
+                          <div class="card-body box-profile">
+                            <div class="text-center">
+                              <img class="profile-user-img img-fluid img-circle"
+                                   src="assets/src/dist/camille.jpg"
+                                   alt="User profile picture">
+                            </div>
+                            <h3 class="profile-username text-center">Camille Malaza</h3>
+                            <p class="text-muted text-center">Junior Programmer</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-primary card-outline">
+                          <div class="card-body box-profile">
+                            <div class="text-center">
+                              <img class="profile-user-img img-fluid img-circle"
+                                   src="assets/src/dist/michael.jpg"
+                                   alt="User profile picture">
+                            </div>
+                            <h3 class="profile-username text-center">Michael Maquilan</h3>
+                            <p class="text-muted text-center">Junior Programmer</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-primary card-outline">
+                          <div class="card-body box-profile">
+                            <div class="text-center">
+                              <img class="profile-user-img img-fluid img-circle"
+                                   src="assets/src/dist/ralph.jpg"
+                                   alt="User profile picture">
+                            </div>
+                            <h3 class="profile-username text-center">Ralph Lorenzo</h3>
+                            <p class="text-muted text-center">Junior Programmer</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-primary card-outline">
+                          <div class="card-body box-profile">
+                            <div class="text-center">
+                              <img class="profile-user-img img-fluid img-circle"
+                                   src="assets/src/dist/edmar.jpg"
+                                   alt="User profile picture">
+                            </div>
+                            <h3 class="profile-username text-center">Edmar Viloria</h3>
+                            <p class="text-muted text-center">Junior Programmer</p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+                 <div class="tab-pane" id="tab_4">
+                <div class="row">
+                    <div class="col-12">
+                    
+       
+                        <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">Create Peer Review</h3>
+                       		</div>
+                        <form id="regForm" action="/action_page.php">
+							 
+							  <div class="tab">
+							   <div class="card-body">
+                            
+                             <div class="form-row">
+    							
+    							<div class="col">
+     						 <p>JIRA: </p>
+    							</div>
+   								<div class="col">
+      						<p>Date: </p>
+   								 </div>
+   							 <div class="col">
+      						<p>Type: </p>
+   							 </div>
+ 							
+ 							 </div>
+                               
+                              <div class="form-row">
+    							
+    							<div class="col">
+     						 <input type="text" class="form-control"  name="Jira" placeholder="<BOCN-1234>">
+    							</div>
+   								<div class="col"> 
+      						<input type="text" class="form-control"  name="date" type="date" placeholder="mm/dd/yyyy">
+   								 </div>
+   							 <div class="col">
+      						<select name="type" id="type" class="form-control">
+                                <option>Hotfix</option>
+                                <option>BAU</option>
+                                <option>Project</option>
+                            </select>
+   							 </div>
+ 							
+ 							 </div> <br/>
+ 							 
+ 							  <div class="form-row">
+    							
+    							<div class="col">
+     						 		<p>Developer: </p>
+    							</div>
+ 							
+ 							 </div>
+ 							 
+ 							 <div class="form-row">
+    							
+    							<div class="col">
+     						 <input type="text" name ="developer" class="form-control"  placeholder="Developer's Name" >
+    							</div>
+ 							
+ 							 </div><br/>
+ 							 
+ 							  <div class="form-row">
+    							
+    							<div class="col">
+     								<p>Reviewer:</p>
+    							</div>
+ 							
+ 							 </div>
+ 							 
+ 							  <div class="form-row">
+    							
+    							<div class="col">
+     						 <input type="text" name ="reviewer" class="form-control"  placeholder="Reviewer's Name" >
+    							</div>
+ 							
+ 							 </div><br/>
+ 							
+                            </div>
+							  
+							  
+							  </div>
+							  <s:hidden property="count" value= "count" id="count"/>
+							  <s:set var= "count" value = "count"
+							  
+							  />
+							  <div class="tab">
+					<div class='row'>
+                      <div class="col-sm-12">
+                          <h4><s:property count /></h4>
+                      </div>
+                      <div class="col-sm-12">
+                        <p><label>1.1. Completeness of requirement implementation </label></p>
+                      </div>
+                      <div class="col-sm-4">
+                        <p><label>Include: </label><br>
+                        <select class="form-control">
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select></p>
+                      </div>
+                      <div class="col-sm-4">
+                        <p><label>Points:</label>
+                        <input id="date" name="date" class="form-control" min="0" value="0" type="number" placeholder="Enter Points"></p>
+                      </div>
+                      <div class="col-sm-4">
+                        <p><label>Grade:</label>
+                        <input id="date" name="date" class="form-control" min="0" value="0" type="number" placeholder="Enter Grade"></p>
+                      </div>
+							  </div>
+							  </div>
+							
+							  <div style="overflow:auto;">
+							    <div style="float:right;">
+							      <button type="button" id="prevBtn" onclick="nextPrev(-1)" class="btn btn-primary">Previous</button>
+							      <button type="button" id="nextBtn" onclick="nextPrev(1)" class="btn btn-primary">Next</button>
+							    </div>
+							  </div>
+							  <!-- Circles which indicates the steps of the form: -->
+							  <div style="text-align:center;margin-top:40px;">
+							    <span class="step"></span>
+							    <span class="step"></span>
+							   
+							  </div>
+							</form> 
+                        
+                        
+                        
+                        
+                        
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2018 <a href="#">EMS @ 2Success</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 1.0
+  </footer>
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+
+	<div id="deleteModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Delete Employee Entry</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <p>Are you sure you want to delete this entry?</p>
+	        <form id="delete-form">
+	        	<input type="hidden" id="employeeIdD" />
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	      	<button type="button" id="btnSubmitDelete" class="btn btn-danger">Delete</button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<div id="updateModal" class="modal fade" role="dialog">
+         <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+               <div class="modal-header">
+		        <h5 class="modal-title">Update Employee</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+               <div class="modal-body">
+                  <form id="update-form">
+                     <div class="form-group">
+                        <label for="email">Employee Id</label>
+                        <input class="form-control" id="employeeIdU" placeholder="Employee Id" disabled>
+                     </div>
+                     <div class="form-group">
+                        <label for="pwd">Name</label>
+                        <input class="form-control" id="employeeNameU" placeholder="Name">
+                     </div>
+                     <div class="form-group">
+                        <label for="pwd">Address</label>
+                        <input type="text" class="form-control" id="addressU" placeholder="Address">
+                     </div>
+                     <div class="form-group">
+                        <label for="pwd">City</label>
+                        <input type="text" class="form-control" id="cityU" placeholder="City">
+                     </div>
+                     <div class="form-group">
+                        <label for="pwd">Country</label>
+                        <input type="text" class="form-control" id="countryU" placeholder="Country">
+                     </div>
+                      
+					<div class="form-group">
+					<label for="sel1">Department:</label>
+					<select id="departmentIdU" class="form-control">
+						<s:iterator value="listDepartment">
+							<option value="<s:property value="departmentId" />">
+								    <s:property value="departmentName" />
+							</option>
+						</s:iterator>
+					</select>
+					</div>
+						
+                      <div class="form-group">
+					<label for="sel1">Status:</label>
+					<select class="form-control" id="statusU">
+						<option value="A">Active</option>
+						<option value="D">Deactive</option>
+					</select>
+					</div>
+                  </form>
+               </div>
+               <div class="modal-footer">
+               	  <button id="btnSubmitEdit" type="button" class="btn btn-primary">Update</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+	<div id="addModal" class="modal fade" role="dialog">
+         <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+               <div class="modal-header">
+		        <h5 class="modal-title">Add Employee</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+               <div class="modal-body">
+                  <form id="update-form">
+                     <div class="form-group">
+                        <label for="pwd">Name: </label>
+                        <input id="employeeNameA" class="form-control" type="text" name="employeeName" size="45"/>
+                     </div>
+                     <div class="form-group">
+                        <label for="pwd">Address: </label>
+                        <input id="addressA" class="form-control" type="text" name="address" size="45"/>
+                     </div>
+                     <div class="form-group">
+                        <label for="pwd">City: </label>
+                        <input id="cityA" class="form-control" type="text" name="city" size="45"/>
+                     </div>
+                     <div class="form-group">
+                        <label for="pwd">Country: </label>
+                        <input id="countryA" class="form-control" type="text" name="country" size="45"/>
+                     </div>
+                      
+					<div class="form-group">
+					<label for="sel1">Department:</label>
+					<select id="departmentIdA" name="departmentId" class="form-control">
+						<s:iterator value="listDepartment">
+							<option value="<s:property value="departmentId" />">
+								    <s:property value="departmentName" />
+							</option>
+						</s:iterator>
+					</select>
+					</div>
+                  </form>
+               </div>
+               <div class="modal-footer">
+               	  <button id="btnSubmitAdd" class="btn btn-success"> Add</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+      <div class="modal" id="modalSuccess" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Operation Successful</h5>
+	      </div>
+	      <div class="modal-body">
+	        <p>You have successfully completed the operation.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <a href="Welcome"><button type="button" class="btn btn-primary">Close</button></a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<div class="modal" id="modalFailed" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Operation Failed</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <p>Operation was unsuccessful.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <a href="Welcome"><button type="button" class="btn btn-primary">Back to Home</button></a>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<script  type="text/javascript">
+	 var currentTab = 0; // Current tab is set to be the first tab (0)
+	 showTab(currentTab); // Display the crurrent tab
+
+	 function showTab(n) {
+	   // This function will display the specified tab of the form...
+	   var x = document.getElementsByClassName("tab");
+	   x[n].style.display = "block";
+	   //... and fix the Previous/Next buttons:
+	   if (n == 0) {
+	     document.getElementById("prevBtn").style.display = "none";
+	   } else {
+	     document.getElementById("prevBtn").style.display = "inline";
+	   }
+	   if (n == (x.length - 1)) {
+	     document.getElementById("nextBtn").innerHTML = "Submit";
+	   } else {
+	     document.getElementById("nextBtn").innerHTML = "Next";
+	   }
+	   //... and run a function that will display the correct step indicator:
+	   fixStepIndicator(n)
+	 }
+
+	 function nextPrev(n) {
+	   // This function will figure out which tab to display
+	   var x = document.getElementsByClassName("tab");
+	   // Exit the function if any field in the current tab is invalid:
+	   if (n == 1 && !validateForm()) return false;
+	   // Hide the current tab:
+	   x[currentTab].style.display = "none";
+	   // Increase or decrease the current tab by 1:
+	   currentTab = currentTab + n;
+	   // if you have reached the end of the form...
+	   if (currentTab >= x.length) {
+	     // ... the form gets submitted:
+	     document.getElementById("regForm").submit();
+	     return false;
+	   }
+	   // Otherwise, display the correct tab:
+	   showTab(currentTab);
+	 }
+
+	 function validateForm() {
+	   // This function deals with validation of the form fields
+	   var x, y, i, valid = true;
+	   x = document.getElementsByClassName("tab");
+	   y = x[currentTab].getElementsByTagName("input");
+	   // A loop that checks every input field in the current tab:
+	   for (i = 0; i < y.length; i++) {
+	     // If a field is empty...
+	     if (y[i].value == "") {
+	       // add an "invalid" class to the field:
+	       y[i].className += " invalid";
+	       // and set the current valid status to false
+	       valid = false;
+	     }
+	   }
+	   // If the valid status is true, mark the step as finished and valid:
+	   if (valid) {
+	     document.getElementsByClassName("step")[currentTab].className += " finish";
+	   }
+	   return valid; // return the valid status
+	 }
+
+	 function fixStepIndicator(n) {
+	   // This function removes the "active" class of all steps...
+	   var i, x = document.getElementsByClassName("step");
+	   for (i = 0; i < x.length; i++) {
+	     x[i].className = x[i].className.replace(" active", "");
+	   }
+	   //... and adds the "active" class on the current step:
+	   x[n].className += " active";
+	 }
+	 </script>
+	<script>
+		$(document).ready( function () {
+		    $('#employeeTable').DataTable( {
+		    	dom: 'lBfrtip',
+		        buttons: [
+		            'excel', 'pdf', 'print'
+		        ]
+		    });
+		} );
+		//Edit or Update Employee
+		$('#btnSubmitEdit').click(function() {
+			var dataObj = {
+					"data": [{
+						"employeeId" : $('#employeeIdU').val(),
+						"employeeName" : $('#employeeNameU').val(),
+						"address" : $('#addressU').val(),
+						"city" : $('#cityU').val(),
+						"country" : $('#countryU').val(),
+						"departmentId" : $("#departmentIdU").val(),
+						"status" : $('#statusU').val(),
+					}]
+			}
+			var jsonRequest = JSON.stringify(dataObj);
+			$.ajax({
+			    url: "EditEmployee.action",
+			    data: jsonRequest,
+			    dataType: 'json',
+			    contentType: 'application/json',
+			    type: 'POST',
+			    async: true,
+			    success: function (res) {
+			        if(res.success == 1) {
+			        	$('#updateModal').modal('hide');
+			        	$('#modalSuccess').modal('show');
+			        }
+			        else {
+			        	$('#updateModal').modal('hide');
+			        	$('#modalFailed').modal('show');
+			        }
+			    }
+			});
+		});
+		//Delete Employee
+		$('#btnSubmitDelete').click(function() {
+			var dataObj = {
+					"data": [{
+						"employeeId" : $('#employeeIdD').val(),
+						"employeeName" : null,
+						"address" : null,
+						"city" : null,
+						"country" : null,
+						"departmentId" : null,
+						"status" : null,
+					}]
+			};
+			var jsonRequest = JSON.stringify(dataObj);
+			$.ajax({
+			    url: "DeleteEmployee.action",
+			    data: jsonRequest,
+			    dataType: 'json',
+			    contentType: 'application/json',
+			    type: 'POST',
+			    async: true,
+			    success: function (res) {
+			        if(res.success == 1) {
+			        	$('#deleteModal').modal('hide');
+			        	$('#modalSuccess').modal('show');
+			        }
+			        else {
+			        	$('#deleteModal').modal('hide');
+			        	$('#modalFailed').modal('show');
+			        }
+			    }
+			});
+		});
+		
+		$('#btnSubmitAdd').click(function() {
+			var dataObj = {
+					"data": [{
+						"employeeName" : $('#employeeNameA').val(),
+						"address" : $('#addressA').val(),
+						"city" : $('#cityA').val(),
+						"country" : $('#countryA').val(),
+						"departmentId" : $("#departmentIdA").val(),
+					}]
+			}
+			var jsonRequest = JSON.stringify(dataObj);
+			$.ajax({
+			    url: "AddEmployee.action",
+			    data: jsonRequest,
+			    dataType: 'json',
+			    contentType: 'application/json',
+			    type: 'POST',
+			    async: true,
+			    success: function (res) {
+			        if(res.success == 1) {
+			        	$('#employeeNameA').val("");
+			        	$('#addressA').val("");
+			        	$('#cityA').val("");
+			        	$('#countryA').val("");
+			        	
+			        	$('#addModal').modal('hide');
+			        	$('#modalSuccess').modal('show');
+			        }
+			        else {
+			        	$('#employeeNameA').val("");
+			        	$('#addressA').val("");
+			        	$('#cityA').val("");
+			        	$('#countryA').val("");
+			        	$('#addModal').modal('hide');
+			        	$('#modalFailed').modal('show');
+			        }
+			    }
+			});
+		});
+	</script>
+      <script>
+      	 $('#deleteModal').on('show.bs.modal', function(e) {
+      		 var opener=e.relatedTarget;
+      		 var empid=$(opener).attr('emp-id');
+      		 $('#delete-form').find('[id="employeeIdD"]').val(empid);
+      		 
+      	 });
+      	 
+         $('#updateModal').on('show.bs.modal', function (e) {
+          	  // get information to update quickly to modal view as loading begins
+          	  var opener=e.relatedTarget;//this holds the element who called the modal
+          	   
+          	  //we get details from attributes
+          	var empid=$(opener).attr('emp-id');
+          	var empname=$(opener).attr('emp-name');
+          	var empaddress=$(opener).attr('emp-address');
+          	var city=$(opener).attr('city');
+          	var country=$(opener).attr('country');
+          	var empstatus=$(opener).attr('emp-status');
+          	var deptid=$(opener).attr('dept-id');
+          	  
+          	  //set what we got to our form
+         	$('#update-form').find('[id="employeeIdU"]').val(empid);
+          	$('#update-form').find('[id="employeeNameU"]').val(empname);
+          	$('#update-form').find('[id="addressU"]').val(empaddress);
+          	$('#update-form').find('[id="cityU"]').val(city);
+          	$('#update-form').find('[id="countryU"]').val(country);
+          	$('#update-form').find('[id="statusU"]').val(empstatus);
+          	$('#update-form').find('[id="departmentIdU"]').val(deptid);
+             
+          	});
+      </script>
+
+	<!-- jQuery -->
+	<script src="assets/src/plugins/jquery/jquery.min.js"></script>
+	<!-- jQuery UI 1.11.4 -->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+	<script>
+	  $.widget.bridge('uibutton', $.ui.button)
+	</script>
+	<!-- Bootstrap 4 -->
+	<script src="assets/src/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Bootstrap WYSIHTML5 -->
+	<script src="assets/src/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+	<!-- Slimscroll -->
+	<script src="assets/src/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+	<!-- FastClick -->
+	<script src="assets/src/plugins/fastclick/fastclick.js"></script>
+	<!-- AdminLTE App -->
+	<script src="assets/src/dist/js/adminlte.js"></script>
+	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+	<script src="assets/src/dist/js/pages/dashboard.js"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="assets/src/dist/js/demo.js"></script>
+	<!-- DataTables -->
+	<script src="assets/src/plugins/datatables/jquery.dataTables.js"></script>
+	<script src="assets/src/plugins/datatables/dataTables.bootstrap4.js"></script>
+	<script>
+	  $(function () {
+	    $("#employeeTable").DataTable();
+	    $('#example2').DataTable({
+	      "paging": true,
+	      "lengthChange": false,
+	      "searching": false,
+	      "ordering": true,
+	      "info": true,
+	      "autoWidth": false
+	    });
+	  });
+	</script>
+
+
+</body>

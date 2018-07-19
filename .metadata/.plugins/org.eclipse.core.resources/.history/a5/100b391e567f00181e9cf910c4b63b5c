@@ -1,0 +1,8 @@
+package idv.camille.MyDemo;
+
+public class AService {
+
+	public void execute() {
+		System.out.println("AService is running");
+	}
+}

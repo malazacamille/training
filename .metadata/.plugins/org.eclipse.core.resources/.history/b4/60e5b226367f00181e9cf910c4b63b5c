@@ -1,0 +1,9 @@
+package idv.camille;
+
+public class AServiceFactory {
+	
+	private AServiceFactory() {
+		
+	}
+	
+}

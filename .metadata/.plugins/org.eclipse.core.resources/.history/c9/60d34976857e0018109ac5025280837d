@@ -1,0 +1,39 @@
+package com.twosuccess.bootcamp2018.action;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.opensymphony.xwork2.Action;
+import com.twosuccess.bootcamp2018.model.Employee;
+import com.twosuccess.bootcamp2018.modules.EmployeeModule;
+import com.twosuccess.bootcamp2018.services.EmployeeService;
+
+public class WelcomeJSONAction {
+
+	private EmployeeService employeeService;
+	private Injector injector;
+	private Map<String, Employee> mapEmployee = new HashMap<String, Employee>();
+	
+	public WelcomeJSONAction() {
+		
+	}
+
+	public Map<String, Employee> getMapEmployee() {
+		return mapEmployee;
+	}
+
+	public void setMapEmployee(Map<String, Employee> mapEmployee) {
+		this.mapEmployee = mapEmployee;
+	}
+
+	public String execute() {
+		injector = Guice.createInjector(new EmployeeModule());
+		employeeService = injector.getInstance(EmployeeService.class);
+		for(Employee item : employeeService.selectAll()) {
+			mapEmployee.put(item.getEmployeeId(), item);
+		}
+		return Action.SUCCESS;
+	}
+}

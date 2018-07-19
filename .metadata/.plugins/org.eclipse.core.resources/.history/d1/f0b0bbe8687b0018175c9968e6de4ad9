@@ -1,0 +1,191 @@
+package idv.camille;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.LinkedBlockingQueue;
+
+public class MyApplication {
+	
+	public static void main(String[] args) {
+		
+		//Queue
+		
+		 LinkedBlockingQueue<String> queue = new LinkedBlockingQueue<String>();
+		
+		new Thread(
+				new Runnable() {
+					@Override
+					public void run() {
+						
+						while(true) {
+							try {
+								Thread.sleep(1000);
+							} catch (InterruptedException e) {
+								System.out.println(queue.add("Provide" + Thread.currentThread().getName()));
+								e.printStackTrace();
+							}
+						}
+					}
+				}
+				).start();
+		
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+			}
+			
+		}).start();
+		
+		
+//		ExecutorService executorsService = Executors.newFixedThreadPool(10);
+//		
+//		List<Future<String>> list =  new ArrayList<Future<String>>();
+//		
+//		for(int i = 0; i < 100; i++) {
+//			Future<String> result = executorsService.submit(new MyCallableTask());
+//		
+//			list.add(result);
+//		}
+//		
+//		System.out.println(list);
+//		
+//		for(Future<String> result : list) {
+//			try {
+//				System.out.println(result.get());
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (ExecutionException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+//		
+//		executorsService.shutdown();
+//		
+		
+	/*	//ThreadPool
+		
+		ExecutorService executorsService = Executors.newFixedThreadPool(10);
+		
+		for(int i = 0; i < 100; i++) {
+			executorsService.execute(new Runnable() {
+
+				@Override
+				public void run() {
+					try {
+						Thread.sleep(1000); // job needs 1 sec. to finish
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					System.out.println(Thread.currentThread().getName());
+				}
+				
+			});
+		}
+		
+		*/
+		
+		/*// not synchronized
+		new Thread(new Runnable() {
+
+			MyData myData = new MyData();
+			@Override
+			public void run() {
+				for(int i = 0; i<100000; i++) {
+					myData.count();
+				}
+				
+			}
+			
+		}).start();
+		
+		new Thread(new Runnable() {
+
+			MyData myData = new MyData();
+			@Override
+			public void run() {
+				for(int i = 0; i<100000; i++) {
+					myData.count();
+				}
+				
+			}
+			
+		}).start();
+		
+		new Thread(new Runnable() {
+
+			MyData myData = new MyData();
+			@Override
+			public void run() {
+				for(int i = 0; i<100000; i++) {
+					myData.count();
+				}
+				
+			}
+			
+		}).start();
+		
+		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println(new MyData().getCount());*/
+		
+		/*System.out.println(new Date());
+		
+		for(int i = 0; i<100 ; i++) {
+			
+			new Thread(
+					
+					new Runnable() {
+
+						@Override
+						public void run() {
+							new MyTask().myJob(); // in 3 sec hundred job already finished
+						}
+						
+					}
+					
+					).start();
+			
+			}
+		
+		System.out.println(new Date());
+		*/
+		
+		/*System.out.println(MyApplication.class.getName()+ ":" +Thread.currentThread().getName());
+		
+		MyThread01 thread01 = new MyThread01(); // 1st way
+		
+		thread01.start();
+		
+		Thread myRunnableThread = new Thread(new MyRunnable());	// 2nd way
+		
+		myRunnableThread.start();
+		
+		System.out.println("end");*/
+		
+		/*new Thread(
+				new Runnable() {
+
+					@Override
+					public void run() {
+						System.out.println(this.getClass().getName() + ":" + Thread.currentThread().getName());
+					}
+				}
+				
+				).start(); // anonymous thread
+*/	}
+	
+}

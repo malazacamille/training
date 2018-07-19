@@ -1,0 +1,9 @@
+
+public class MainCar {
+	
+	public static void main(String [] args) {
+		CarImpl myCar = new CarImpl();
+		
+		CarLogger myLog = new CarLogger(myCar);
+	}
+}

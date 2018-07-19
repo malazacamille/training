@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ItemQuestion">
+	<resultMap id="result" type="ItemQuestion">
+		<result property="itemGroupName" column="ItemGroupName"></result>
+		<result property="itemNo" column="ItemNo"></result>
+		<result property="itemDescription" column="ItemDescription"></result>
+		<result property="itemGroupNumber" column="ItemGroupNumber"></result>
+	</resultMap>
+	
+	
+	<select id="selectAll"  resultMap="result">
+		SELECT itemgroup.itemGroupName,
+		 item.ItemNo,item.ItemDescription 
+		 
+		 FROM item,
+		 	itemgroup 
+		 
+		 WHERE
+		 item.ItemGroupId=itemgroup.ItemGroupId 
+		 AND
+		 order by itemgroup.ItemGroupNumber ASC;
+	</select>
+	<select id="countItemGroupNumber" resultType="int">
+		
+		SELECT COUNT(DISTINCT(ItemGroupNumber)) from itemgroup;
+	
+	</select>
+	
+</mapper>

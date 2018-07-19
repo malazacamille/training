@@ -1,0 +1,5 @@
+package com.twosuccess.bootcamp2018.dao;
+
+public interface QuestionDAO {
+
+}

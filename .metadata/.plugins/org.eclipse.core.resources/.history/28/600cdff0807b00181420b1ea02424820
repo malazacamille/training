@@ -1,0 +1,21 @@
+package idv.camille.assignment;
+
+public class MyApplication {
+	public static void main(String[] args) {
+		// #1 Runnable
+		
+		//#2 Thread
+		System.out.println("Thread:");
+		MyThread mt = new MyThread(); /* main thread created the child thread*/
+		mt.start();
+		// anonymous subclass of thread
+		Thread thread = new Thread(){
+		    public void run(){
+		      System.out.println("Thread Running");
+		    }
+		  };
+
+		  thread.start();
+		
+	}
+}

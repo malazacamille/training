@@ -1,0 +1,10 @@
+package idv.camille;
+
+public class CService {
+	
+	public void exec() {
+		AService service = new AService();
+		service.execute();
+
+	}
+}

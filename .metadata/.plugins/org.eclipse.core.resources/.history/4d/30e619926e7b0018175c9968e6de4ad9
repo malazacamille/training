@@ -1,0 +1,7 @@
+package idv.camille;
+
+import java.util.List;
+
+public class Person {
+	private static List<String> nameList;
+}

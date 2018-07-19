@@ -1,0 +1,14 @@
+package idv.camille;
+
+public class AServiceFactory {
+	
+	private AServiceFactory() {
+		
+	}
+	
+	public static IfAService getInstance() {
+		
+		return new AService();
+	}
+	
+}

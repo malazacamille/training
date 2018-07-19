@@ -1,0 +1,11 @@
+package idv.camille.assignment;
+
+public class MyApplication {
+	public static void main(String[] args) {
+		// #1 Runnable
+		Thread myRunnableThread = new Thread(new MyRunnable());	// 2nd way
+		
+		myRunnableThread.start();
+		
+	}
+}

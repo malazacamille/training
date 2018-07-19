@@ -1,0 +1,9 @@
+package idv.camille.assignment;
+
+public class MyApplication {
+	public static void main(String[] args) {
+		// #1 Runnable
+		
+		
+	}
+}

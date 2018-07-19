@@ -1,0 +1,26 @@
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+public class Sample {
+	public static void main (String[] args) {
+		ScheduledExecutorService scheduler =
+			     Executors.newScheduledThreadPool(10);
+		
+		scheduler.execute(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					TimeUnit.SECONDS.sleep(1);
+					System.out.println("Hello");
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			
+		});
+	}
+}

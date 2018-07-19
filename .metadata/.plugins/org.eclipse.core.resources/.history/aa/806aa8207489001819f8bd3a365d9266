@@ -1,0 +1,5 @@
+package com.twosuccess.bootcamp2018.resources;
+
+public class MybatisConfig2 {
+
+}

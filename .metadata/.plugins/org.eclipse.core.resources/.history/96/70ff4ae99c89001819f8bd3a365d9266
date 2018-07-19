@@ -1,0 +1,143 @@
+package com.twosuccess.bootcamp2018.action;
+
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.google.common.io.Resources;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.opensymphony.xwork2.Action;
+import com.twosuccess.bootcamp2018.model.Department;
+import com.twosuccess.bootcamp2018.model.Employee;
+import com.twosuccess.bootcamp2018.modules.DepartmentModule;
+import com.twosuccess.bootcamp2018.modules.EmployeeModule;
+import com.twosuccess.bootcamp2018.modules.ItemQuestionModule;
+import com.twosuccess.bootcamp2018.modules.LoginModule;
+import com.twosuccess.bootcamp2018.services.DepartmentService;
+import com.twosuccess.bootcamp2018.services.EmployeeService;
+import com.twosuccess.bootcamp2018.services.ItemQuestionService;
+import com.twosuccess.bootcamp2018.services.LoginService;
+
+public class WelcomeUserAction implements SessionAware{
+	
+	//Get a logger
+	private static final Logger logger = Logger.getLogger(WelcomeUserAction.class);
+	
+	private int count;
+	private String username;
+	private String password;
+	private EmployeeService employeeService;
+	private LoginService loginService;
+	private ItemQuestionService itemQuestionService;
+	private Injector injector;
+	private Injector injector2;
+	private Injector injector3;
+	private List<Employee> listEmployee;
+	private Map<String, Object> sessionMap;
+	private DepartmentService departmentService;
+	private List<Department> listDepartment; 
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public List<Employee> getListEmployee() {
+		return listEmployee;
+	}
+
+	public void setListEmployee(List<Employee> listEmployee) {
+		this.listEmployee = listEmployee;
+	}
+	
+	public List<Department> getListDepartment() {
+		return listDepartment;
+	}
+	
+	public void setListDepartment(List<Department> listDepartment) {
+		this.listDepartment = listDepartment;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	// all struts logic here
+	public String execute() {
+		injector = Guice.createInjector(new EmployeeModule());
+		injector2 = Guice.createInjector(new LoginModule());
+		injector3 = Guice.createInjector(new ItemQuestionModule());
+		employeeService = injector.getInstance(EmployeeService.class);
+		loginService = injector2.getInstance(LoginService.class);
+		itemQuestionService = injector3.getInstance(ItemQuestionService.class);
+		listEmployee = employeeService.selectAll();
+		injector = Guice.createInjector(new DepartmentModule());
+		departmentService = injector.getInstance(DepartmentService.class);
+		listDepartment = departmentService.selectAll();
+		
+		count = itemQuestionService.countItemGroupNumber();
+		String loggedUserName = null;
+		
+		String workingDir = System.getProperty("user.dir");
+		System.out.println(workingDir);
+		
+		boolean result = loginService.validate(username, password);
+		
+		//check if username is already in session
+		if(sessionMap.containsKey("username")) {
+			loggedUserName  = (String) sessionMap.get("username");
+			if(loggedUserName != null) {
+				logger.info("Welcome Page has been loaded");
+				return "SUCCESS";
+			}
+		}
+		
+		//check if username is in session, if no check the username and password
+		if(username != null && result == true) {
+			//add username to session
+			sessionMap.put("username", username);
+			logger.info("Welcome Page has been loaded");
+			return "SUCCESS";
+		}
+		
+		//else
+		logger.info("Failed to login to Welcome Page");
+		return "FAILED";
+	}
+	
+	public String logout() {
+		// remove userNname from the session
+        if (sessionMap.containsKey("username")) {
+            sessionMap.remove("username");
+        }
+        
+        return "SUCCESS";
+	}
+
+	@Override
+	public void setSession(Map<String, Object> sessionMap) {
+		this.sessionMap = sessionMap;
+	}
+	
+}

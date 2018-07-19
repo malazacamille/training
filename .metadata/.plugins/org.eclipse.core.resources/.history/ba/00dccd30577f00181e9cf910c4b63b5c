@@ -1,0 +1,18 @@
+package idv.camille;
+
+public class TransportationFactory {
+
+	 private static IfTransportation jeep = null;
+	 
+	 private TransportationFactory(){
+		 
+	 }
+	 
+	 public static IfTransportation getInstance(){
+	        if(myObj == null){
+	            myObj = new MySingleTon();
+	        }
+	        return myObj;
+	    }
+	
+}

@@ -1,0 +1,12 @@
+package com.twosuccess.bootcamp2018.dao;
+
+import java.util.List;
+
+import com.twosuccess.bootcamp2018.model.ItemQuestion;
+
+
+public interface QuestionDAO {
+	
+	public abstract List<ItemQuestion> selectAll();
+
+}

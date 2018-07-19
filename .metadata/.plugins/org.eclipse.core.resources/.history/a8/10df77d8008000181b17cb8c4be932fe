@@ -1,0 +1,32 @@
+package com.training.dao;
+
+import java.util.List;
+
+import com.training.bean.Employee;
+import com.training.bean.EmployeeDepartment;
+
+public interface EmployeeDAO {
+	
+	public abstract List<Employee> selectAll();
+
+	public abstract Employee selectById(int employeeId);
+
+	public abstract List<Employee> selectByDepartment(String departmentId);
+
+	public abstract int insert(Employee employee);
+
+	public abstract int update(Employee employee);
+
+	public abstract int delete(int employeeId);
+	
+	public abstract int deactivate(int employeeId);
+	
+	public abstract int activate(int employeeId);
+
+	public abstract List<EmployeeDepartment> selectByDepartmentDetailed(
+			String departmentId);
+
+	public abstract List<EmployeeDepartment> selectByIdWithDept(int employeeId);
+
+	public abstract List<EmployeeDepartment> selectAllWithDept();
+}

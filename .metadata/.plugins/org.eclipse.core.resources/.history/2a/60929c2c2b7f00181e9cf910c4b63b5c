@@ -1,0 +1,14 @@
+package com.training.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+
+@Controller
+public class HelloWorldController {
+	
+	public String sayHello(ModelMap model) {
+		model.addAttribute("message","Welcome from Spring MVC");
+		
+		return "welcome";
+	}
+}

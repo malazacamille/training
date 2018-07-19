@@ -1,0 +1,43 @@
+package com.bootcamp.exercise;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+public class ExerciseTest {
+
+	Exercise exc;
+	
+	@Before
+	public void setUp() throws Exception {
+		
+		exc = new Exercise();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		
+		exc = null;
+	}
+
+	@Test
+	public void testNoTriples() {
+		int [] arr = {1,1,2,2,1};
+		boolean expectedResult = exc.noTriples(arr);
+		double result = calc.add(10, 10);
+		assertEquals(expectedResult, result);
+	}
+
+	@Test
+	public void testRedTicket() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testStringE() {
+		fail("Not yet implemented");
+	}
+
+}

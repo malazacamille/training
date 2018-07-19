@@ -1,0 +1,20 @@
+package idv.camille;
+
+import java.util.Calendar;
+
+public class Sample {
+	
+	public static void main (String [] args) {
+     
+		Calendar today = Calendar.getInstance();
+		today.set(Calendar.HOUR_OF_DAY, 16);
+		today.set(Calendar.MINUTE, 0);
+		today.set(Calendar.SECOND, 0);
+
+		
+		
+		
+	}
+	
+	
+}

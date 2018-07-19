@@ -1,0 +1,19 @@
+
+public class CarLoggerA extends CarLogger{
+
+	public CarLoggerA(Cars decoratedCars) {
+		super(decoratedCars);
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Override
+	  public void drive() {
+		decoratedCars.drive();	       
+		beforeDrive(decoratedCars);
+	   }
+
+	   private void beforeDrive(Shape decoratedShape){
+	      System.out.println("Border Color: Red");
+	   }
+
+}

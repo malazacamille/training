@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+   <typeAliases>
+      <typeAlias alias = "Employee" type = "com.twosuccess.bootcamp2018.model.Employee"/>
+      <typeAlias alias = "Department" type = "com.twosuccess.bootcamp2018.model.Department"/>
+      <typeAlias alias = "EmployeeDepartment" type = "com.twosuccess.bootcamp2018.model.EmployeeDepartment"/>
+      <typeAlias alias = "Login" type = "com.twosuccess.bootcamp2018.model.Login"/>
+   </typeAliases>
+		
+   <environments default = "development">
+      <environment id = "development">
+         <transactionManager type = "JDBC"/>  
+			
+            <dataSource type = "POOLED">
+               <property name = "driver" value = "com.mysql.jdbc.Driver"/>
+               <property name = "url" value = "jdbc:mysql://localhost:3306/bootcampdb?"/>
+               <property name = "username" value = "root"/>
+               <property name = "password" value = "toor"/>
+            </dataSource>        
+				
+      </environment>
+   </environments>
+
+   <mappers>
+      <mapper resource = "com/twosuccess/bootcamp2018/resources/Employee.xml"/>
+      <mapper resource = "com/twosuccess/bootcamp2018/resources/Department.xml"/>
+      <mapper resource = "com/twosuccess/bootcamp2018/resources/Login.xml"/>
+   </mappers>
+   
+</configuration>

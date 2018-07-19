@@ -1,0 +1,11 @@
+1530667162682	Delete element
+1530669539858	Move 'spring-servlet.xml' to 'WEB-INF'
+1530671398369	Delete element
+1530694570362	Rename package 'com.training.model'
+1530760175511	Rename package 'com.training.dao'
+1530767505688	Move 'mybatis-config.xml' to 'mapper'
+1530768848222	Move 'mybatis-config.xml' to 'WEB-INF'
+1530769819545	Rename resource 'spring-servlet.xml'
+1530770121112	Rename resource 'application-context.xml'
+1530770662416	Move 'Employee.xml' to 'resources'
+1530776313558	Delete element

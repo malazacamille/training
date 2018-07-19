@@ -1,0 +1,42 @@
+package com.bootcamp.exercise;
+
+import java.util.Arrays;
+
+public class Exercise {
+
+	public static void main(String[] args) {
+		int [] arr1 = {1,1,2,2,1};
+		int [] arr2 = {1,1,2,2,2,1};
+		int [] arr3 = {1,1,1,2,2,2,1};
+		System.out.println(noTriples(arr1));
+		System.out.println(noTriples(arr2));
+		System.out.println(noTriples(arr3));
+	}
+	
+	public static boolean noTriples(int [] arr) {
+		boolean result = false;
+		System.out.println(Arrays.toString(arr));
+		int n = arr.length;  
+		int count = 0;
+		for(int i = 0; i < arr.length; i++) {
+			System.out.println("val");
+			for(int j = i + 1 ; j < i + 2 ; j++) {
+				
+				System.out.println(arr[i]+"-"+arr[j]);
+				
+				/*if(arr [i] == arr [j]) {
+					count++;
+					
+				}*/
+			}
+			
+			if (count == 2) {
+				System.out.println("triple");
+			}
+			count = 0;
+			
+		}
+			
+		return result;
+	}
+}

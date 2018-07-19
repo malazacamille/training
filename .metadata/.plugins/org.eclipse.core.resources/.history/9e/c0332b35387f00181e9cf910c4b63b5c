@@ -1,0 +1,18 @@
+package idv.camille;
+
+public class BService {
+	
+	private static IfAService aservice;
+
+/*	static {
+		aservice =AServiceFactory.getInstance();
+	}*/
+	
+	public BService() {
+		
+	}
+	
+	public void test() {
+		aservice.execute();
+	}
+}

@@ -1,0 +1,13 @@
+package idv.camille;
+
+public class MainClass {
+	
+	public static void main (String [] args) {
+		//Contructor
+		SecondService secondservice = 
+				new SecondService();
+		secondservice.setAService(new Van());
+		secondservice.exec();
+	}
+	
+}

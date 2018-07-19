@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="user" namespace="/User" extends="json-default">
+		<action name="Login" class="com.twosuccess.bootcamp2018.action.WelcomeUserAction">
+			<result name="SUCCESS">pages/welcome_user.jsp</result>
+			<result name="FAILED">pages/login.jsp</result>
+		</action>
+		<action name="Welcome" class="com.twosuccess.bootcamp2018.action.WelcomeUserAction">
+			<interceptor-ref name="defaultStack"/>
+	        <interceptor-ref name="json">
+	            <param name="enableSMD">true</param>
+	        </interceptor-ref>
+			<result name="SUCCESS">pages/welcome_user.jsp</result>
+			<result name="FAILED">pages/login.jsp</result>
+		</action>
+		<action name="Logout" class="com.twosuccess.bootcamp2018.action.WelcomeUserAction" method="logout">
+			<result name="SUCCESS" type="redirectAction">Login</result>
+		</action>
+		<action name="Add" class="com.twosuccess.bootcamp2018.action.AddInitAction">
+			<result name="SUCCESS">pages/add.jsp</result>
+		</action>
+		<action name="AddEmployee" class="com.twosuccess.bootcamp2018.action.AddEmployeeJSONAction">
+			<interceptor-ref name="defaultStack"/>
+	        <interceptor-ref name="json">
+	            <param name="enableSMD">true</param>
+	        </interceptor-ref>
+			<result type="json" />
+		</action>
+		<action name="Edit" class="com.twosuccess.bootcamp2018.action.EditInitAction">
+			<result name="SUCCESS">pages/edit.jsp</result>
+		</action>
+		<action name="EditEmployee" class="com.twosuccess.bootcamp2018.action.EditEmployeeJSONAction">
+			<interceptor-ref name="defaultStack"/>
+	        <interceptor-ref name="json">
+	            <param name="enableSMD">true</param>
+	        </interceptor-ref>
+			<result type="json" />
+		</action>
+	</package>
+	<package name="default" namespace="/" extends="json-default">
+		<action name="" class="com.twosuccess.bootcamp2018.action.WelcomeJSONAction">
+			<result type="json" />
+		</action>
+	</package>
+	
+	<!-- <package name="default" namespace="/" extends="struts-default">
+		<action name="" class="com.twosuccess.bootcamp2018.action.WelcomeUserAction">
+			<result name="SUCCESS">User/pages/welcome_user.jsp</result>
+			<result name="FAILED">User/pages/login.jsp</result>
+		</action>
+	</package> -->
+
+</struts>

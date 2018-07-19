@@ -1,0 +1,20 @@
+package idv.camille.MyDemo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class BService {
+	
+	//@Autowired
+	private AService aservice;
+	
+	@Autowired
+	public BService(AService aservice) {
+		this.aservice = aservice;
+	}
+	
+	public void test() {
+		aservice.execute();
+	}
+}

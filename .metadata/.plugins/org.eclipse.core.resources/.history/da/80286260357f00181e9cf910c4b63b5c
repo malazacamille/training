@@ -1,0 +1,11 @@
+package idv.camille;
+
+public class BService {
+	
+	private ifAService aservice;
+
+	public void test() {
+		AService service = new AService();
+		service.execute();
+	}
+}

@@ -1,0 +1,44 @@
+package com.twosuccess.bootcamp2018.daoimp;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.twosuccess.bootcamp2018.dao.QuestionDAO;
+import com.twosuccess.bootcamp2018.model.ItemQuestion;
+
+public class QuestionDAOImp implements QuestionDAO {
+	
+private SqlSessionFactory sqlSessionFactory = null;
+	
+	
+	public  QuestionDAOImp (SqlSessionFactory sqlSessionFactory) {
+		this.sqlSessionFactory = sqlSessionFactory;
+	}
+	
+	
+	@Override
+	public List<ItemQuestion> selectAll(int itemGroupNumber) {
+		List<ItemQuestion> list = null;
+		SqlSession session = sqlSessionFactory.openSession();
+		list = session.selectList("ItemQuestion.selectAll",itemGroupNumber);
+		session.close();
+		//System.out.println("selectAll() --> "+list);
+		return list;
+	}
+
+
+	@Override
+	public int countItemGroupNumber() {
+		int count =0;
+		SqlSession session = sqlSessionFactory.openSession();
+		
+		count = session.selectOne("ItemQuestion.countItemGroupNumber");
+		session.close();
+		return count;
+	}
+
+	
+
+}

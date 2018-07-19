@@ -1,0 +1,51 @@
+package com.twosuccess.bootcamp2018.action;
+
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.opensymphony.xwork2.Action;
+import com.twosuccess.bootcamp2018.model.Employee;
+import com.twosuccess.bootcamp2018.modules.EmployeeModule;
+import com.twosuccess.bootcamp2018.services.EmployeeService;
+
+public class EditEmployeeJSONAction {
+
+	private static final Logger logger = Logger.getLogger(EditEmployeeJSONAction.class);
+	private List<Employee> data;
+	private EmployeeService employeeService;
+	private Injector injector;
+	private int success;
+	
+	public List<Employee> getData() {
+		return data;
+	}
+	public void setData(List<Employee> data) {
+		this.data = data;
+	}
+	public int getSuccess() {
+		return success;
+	}
+	public void setSuccess(int success) {
+		this.success = success;
+	}
+	
+	public String execute() {
+		injector = Guice.createInjector(new EmployeeModule());
+		employeeService = injector.getInstance(EmployeeService.class);
+		Employee employee = data.get(0);
+		success = employeeService.update(employee);
+		
+		if(success > 0) {
+			logger.info("Employee " + EditEmployeeJSONAction.class.getName() + " is edited");
+			} else {
+			logger.error("Employee is not edited", new Exception());
+		}
+		
+		return Action.SUCCESS;
+	}
+	
+	
+}

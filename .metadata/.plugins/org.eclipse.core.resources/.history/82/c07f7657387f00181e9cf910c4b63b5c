@@ -1,0 +1,11 @@
+package idv.camille;
+
+public class MyMain {
+	public static void main(String[] args) {
+		BService bservice = new BService();
+		bservice.test();
+		
+		CService cservice = new CService();
+		cservice.exec();
+	}
+}

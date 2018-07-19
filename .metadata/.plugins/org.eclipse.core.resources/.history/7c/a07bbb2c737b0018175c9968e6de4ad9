@@ -1,0 +1,10 @@
+package idv.camille;
+
+import java.util.concurrent.LinkedBlockingQueue;
+
+public class MyConsumer extends Thread{
+
+	private LinkedBlockingQueue<String> queue;
+	
+	
+}

@@ -1,0 +1,6 @@
+package idv.camille;
+
+public interface Transportation {
+
+	public void travel();
+}

@@ -1,0 +1,19 @@
+
+public class CarLoggerB extends CarLogger{
+
+	public CarLoggerB(Cars decoratedCars) {
+		super(decoratedCars);
+		// TODO Auto-generated constructor stub
+	}
+	
+		@Override
+	  public void drive() {
+		decoratedCars.drive();	       
+		beforeDrive(decoratedCars);
+	   }
+
+	   private void afterDrive(Cars decoratedCars){
+	      System.out.println("Before Drive");
+	   }
+
+}

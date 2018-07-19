@@ -1,0 +1,168 @@
+package com.twosuccess.bootcamp2018.daoimp;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.twosuccess.bootcamp2018.dao.EmployeeDAO;
+import com.twosuccess.bootcamp2018.model.Employee;
+import com.twosuccess.bootcamp2018.model.EmployeeDepartment;
+import com.twosuccess.bootcamp2018.model.ItemQuestion;
+
+public class EmployeeDAOImp implements EmployeeDAO {
+	
+	private SqlSessionFactory sqlSessionFactory = null;
+	
+	public EmployeeDAOImp() {
+		
+	}
+	
+	public EmployeeDAOImp(SqlSessionFactory sqlSessionFactory) {
+		this.sqlSessionFactory = sqlSessionFactory;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.bootcamp.sqltraining.dao.EmployeeDAO#selectAll()
+	 */
+	@Override
+	public List<Employee> selectAll() {
+		List<Employee> list = null;
+		SqlSession session = sqlSessionFactory.openSession();
+		list = session.selectList("ItemQuestion.selectAll");
+		session.close();
+		//System.out.println("selectAll() --> "+list);
+		return list;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.bootcamp.sqltraining.dao.EmployeeDAO#selectById(int)
+	 */
+	@Override
+	public Employee selectById(int employeeId) {
+		ItemQuestion itemQuestion = null;
+		SqlSession session = sqlSessionFactory.openSession();
+		itemQuestion = session.selectOne("Employee.selectById", employeeId);
+		session.close();
+		//System.out.println("selectById("+employeeId+") --> "+employee);
+		return employee;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.bootcamp.sqltraining.dao.EmployeeDAO#selectByDepartment(java.lang.String)
+	 */
+	@Override
+	public List<Employee> selectByDepartment(String departmentId) {
+		List<Employee> list = null;
+		SqlSession session = sqlSessionFactory.openSession();
+		list = session.selectList("Employee.selectByDepartment", departmentId);
+		session.close();
+		//System.out.println("selectByDepartment("+departmentId+") --> "+employee);
+		return list;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.bootcamp.sqltraining.dao.EmployeeDAO#insert(com.bootcamp.sqltraining.model.Employee)
+	 */
+	@Override
+	public int insert(Employee employee) {
+		int id = -1;
+		SqlSession session = sqlSessionFactory.openSession();
+		
+		id = session.insert("Employee.insert", employee);
+		session.commit();
+		session.close();
+		//System.out.println("insert("+employee+") --> "+employee.getEmployeeId());
+		return id;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.bootcamp.sqltraining.dao.EmployeeDAO#update(com.bootcamp.sqltraining.model.Employee)
+	 */
+	@Override
+	public int update(Employee employee) {
+		int id = -1;
+		SqlSession session = sqlSessionFactory.openSession();
+		id = session.update("Employee.update", employee);
+		session.commit();
+		session.close();
+		return id;
+		//System.out.println("update("+employee+") --> updated");
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.bootcamp.sqltraining.dao.EmployeeDAO#delete(int)
+	 */
+	@Override
+	public int delete(String employeeId) {
+		int id = -1;
+		SqlSession session = sqlSessionFactory.openSession();
+		id = session.delete("Employee.delete", employeeId);
+		session.commit();
+		session.close();
+		//System.out.println("delete("+employeeId+")");
+		return id;
+	}
+	
+	@Override
+	public int deactivate(String employeeId) {
+		int id = -1;
+		SqlSession session = sqlSessionFactory.openSession();
+		id = session.update("Employee.deactivate", employeeId);
+		session.commit();
+		session.close();
+		
+		return id;
+	}
+	
+	@Override
+    public int activate(String employeeId) {
+        int id = -1;
+        SqlSession session = sqlSessionFactory.openSession();
+        id = session.update("Employee.activate", employeeId);
+        session.commit();
+        session.close();
+        
+        return id;
+    }
+
+	/* (non-Javadoc)
+	 * @see com.bootcamp.sqltraining.dao.EmployeeDAO#selectByDepartmentDetailed(java.lang.String)
+	 */
+	@Override
+	public List<EmployeeDepartment> selectByDepartmentDetailed(String departmentId) {
+		List<EmployeeDepartment> list = null;
+		SqlSession session = sqlSessionFactory.openSession();
+		list = session.selectList("Employee.selectByDepartmentDetailed", departmentId);
+		session.close();
+		//System.out.println("selectByDepartmentDetailed("+departmentId+") --> "+list);
+		return list;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.bootcamp.sqltraining.dao.EmployeeDAO#selectByIdWithDept(int)
+	 */
+	@Override
+	public List<EmployeeDepartment> selectByIdWithDept(int employeeId) {
+		List<EmployeeDepartment> list = null;
+		SqlSession session = sqlSessionFactory.openSession();
+		list = session.selectList("Employee.selectByIdWithDept", employeeId);
+		session.close();
+		//System.out.println("selectByIdWithDept("+employeeId+") --> "+list);
+		return list;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.bootcamp.sqltraining.dao.EmployeeDAO#selectAllWithDept()
+	 */
+	@Override
+	public List<EmployeeDepartment> selectAllWithDept() {
+		List<EmployeeDepartment> list = null;
+		SqlSession session = sqlSessionFactory.openSession();
+		list = session.selectList("Employee.selectAllWithDept");
+		session.close();
+		//System.out.println("selectAllWithDept() --> "+list);
+		return list;
+	}
+	
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Employee" >
+	<resultMap id="employeeResult" type="Employee">
+		<result property="employeeId" column="employeeId" />
+		<result property="Name" column="Name"/>
+		<result property="Address" column="Address"/>
+		<result property="Status" column="status"/>
+	</resultMap>
+	
+	<resultMap id="SimpleJoinResult" type="Employee">
+    	<result property="employeeId" column="employeeId" />
+		<result property="Name" column="Name"/>
+		<result property="Address" column="Address"/>
+    <collection property="Department" column="employeeId" ofType="Department">
+      	<result property="departmentId" column="deptId" />
+		<result property="department" column="department"/>
+		<result property="employeeId" column="employeeId"/>
+    </collection>
+  </resultMap>
+	
+	
+	<select id="retrieveAllResults" resultMap="SimpleJoinResult">
+	    SELECT Employee.EmployeeID, Employee.Name, Employee.Address, Dept.Department from Dept INNER JOIN Employee ON Dept.EmployeeID=Employee.EmployeeID;
+	</select>
+	
+	<select id="selectEmployee" resultMap="employeeResult">
+	    SELECT * from employee where status="A";
+	</select>
+	<insert id="insertEmployee" parameterType="Employee"  keyProperty="id" useGeneratedKeys="true">
+		INSERT into employee(EmployeeID,Name,Address,status) VALUES(#{employeeId}, #{Name},#{Address},#{Status})    
+	</insert>
+	<update id="updateEmployee" parameterType="Employee">
+		UPDATE employee SET Name=#{Name}, Address=#{Address} WHERE EmployeeID =#{employeeId}  	    
+	</update>
+	<delete id="deleteEmployee" parameterType="Employee">
+		UPDATE employee SET status="D" WHERE EmployeeID =#{employeeId}  	    	    
+	</delete>
+</mapper> 

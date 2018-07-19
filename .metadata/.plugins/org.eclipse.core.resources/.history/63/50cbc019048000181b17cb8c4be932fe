@@ -1,0 +1,38 @@
+package com.training.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+@Controller
+@SessionAttributes("Employee")
+public class HelloWorldController {
+	
+	@RequestMapping(value="/" , method=RequestMethod.GET)
+	public String sayHello(ModelMap model) {
+		model.addAttribute("message","Welcome from Spring MVC");
+		
+		return "welcome";
+	}
+	
+	@RequestMapping(value="/helloAgain" , method=RequestMethod.GET)
+	public String sayHelloAgain(ModelMap model) {
+		model.addAttribute("message","Welcome Again from Spring MVC");
+		
+		return "welcome";
+	}
+	
+	@RequestMapping(value="/List")
+	public ModelAndView index() {
+	List<Employee> empList = empDao.getAllEmployees();
+	List<Department> deptList = deptDao.getAllDepartments();
+	ModelAndView mv = new ModelAndView("index");
+	mv.addObject("emplist",empList);
+	mv.addObject("deptList",deptList);
+	mv.addObject("emp", new Employee());
+	return mv;
+	}
+	
+}

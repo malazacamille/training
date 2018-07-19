@@ -1,0 +1,33 @@
+package idv.camille.assignment;
+
+public class MyApplication {
+	public static void main(String[] args) {
+		// #1 Runnable
+		
+		System.out.println("Runnable: ");
+		
+		Thread myRunnableThread = new Thread(new MyRunnable());
+		myRunnableThread.start();
+		// other implementation
+		System.out.println("Other Implementation of Runnable: ");
+		Thread t = new Thread(new Runnable() {
+		    public void run() {
+		    	System.out.println(MyRunnable.class.getName()+ ":" +Thread.currentThread().getName());
+				
+				
+				for(int i = 0; i < 20 ; i++ ) {
+					System.out.println("MyRunnableOtherImplementation: " + i);
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					} 
+				}
+		    }
+		});
+		t.start();
+		
+		
+		
+	}
+}

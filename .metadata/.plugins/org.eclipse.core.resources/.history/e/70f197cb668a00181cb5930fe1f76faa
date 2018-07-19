@@ -1,0 +1,15 @@
+package com.training.model;
+
+public class MainProcess {
+	public static void main(String [] args) throws Exception {
+		Banker banker = new Banker();
+		System.out.println(Banker.deckOfCard);
+		System.out.println(Banker.deckOfCard.size());
+		Banker.getCards(2);
+		System.out.println(Banker.deckOfCard);
+		System.out.println(Banker.cardsLeft());
+		Banker.getCards(40);
+		System.out.println(Banker.deckOfCard);
+		System.out.println(Banker.cardsLeft());
+		}
+}

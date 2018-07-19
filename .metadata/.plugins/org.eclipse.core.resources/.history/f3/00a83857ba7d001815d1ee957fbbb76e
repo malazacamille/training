@@ -1,0 +1,40 @@
+package com.bootcamp.exercise;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+public class ExerciseTest {
+
+	Exercise exc;
+	
+	@Before
+	public void setUp() throws Exception {
+		
+		exc = new Exercise();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		
+		exc = null;
+	}
+
+	@Test
+	public void testNoTriples() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testRedTicket() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testStringE() {
+		fail("Not yet implemented");
+	}
+
+}

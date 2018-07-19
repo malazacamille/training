@@ -1,0 +1,69 @@
+package idv.camille;
+
+import java.util.Date;
+
+public class MyApplication {
+	
+	public static void main(String[] args) {
+		
+		new Thread(new Runnable() {
+
+			MyData myData = new MyData();
+			@Override
+			public void run() {
+				for(int i = 0; i<100; i++) {
+					
+				}
+				
+			}
+			
+		}).start();
+		
+		
+		/*System.out.println(new Date());
+		
+		for(int i = 0; i<100 ; i++) {
+			
+			new Thread(
+					
+					new Runnable() {
+
+						@Override
+						public void run() {
+							new MyTask().myJob(); // in 3 sec hundred job already finished
+						}
+						
+					}
+					
+					).start();
+			
+			}
+		
+		System.out.println(new Date());
+		*/
+		
+		/*System.out.println(MyApplication.class.getName()+ ":" +Thread.currentThread().getName());
+		
+		MyThread01 thread01 = new MyThread01(); // 1st way
+		
+		thread01.start();
+		
+		Thread myRunnableThread = new Thread(new MyRunnable());	// 2nd way
+		
+		myRunnableThread.start();
+		
+		System.out.println("end");*/
+		
+		/*new Thread(
+				new Runnable() {
+
+					@Override
+					public void run() {
+						System.out.println(this.getClass().getName() + ":" + Thread.currentThread().getName());
+					}
+				}
+				
+				).start(); // anonymous thread
+*/	}
+	
+}

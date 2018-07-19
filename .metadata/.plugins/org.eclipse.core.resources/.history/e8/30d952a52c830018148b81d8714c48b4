@@ -1,0 +1,18 @@
+
+public abstract class CarLogger implements Cars{
+	
+	
+	protected Cars decoratedCars;
+
+	   public CarLogger(Cars decoratedCars){
+	      this.decoratedCars = decoratedCars;
+	   }
+
+	@Override
+	public void drive() {
+		decoratedCars.drive();
+	}
+	
+	
+
+}

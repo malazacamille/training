@@ -1,0 +1,7 @@
+package idv.camille;
+
+public enum IfAServiceEnum {
+	
+	AService, AAService;
+	
+}

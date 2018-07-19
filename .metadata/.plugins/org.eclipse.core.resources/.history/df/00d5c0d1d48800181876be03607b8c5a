@@ -1,0 +1,41 @@
+package com.twosuccess.bootcamp2018.model;
+
+public class ReviewSheet {
+	String ReviewSheetId;
+	String JiraNumber;
+	String developerId;
+	String reviewSheetType;
+	String reviewSheetDate;
+	public String getReviewSheetId() {
+		return ReviewSheetId;
+	}
+	public void setReviewSheetId(String reviewSheetId) {
+		ReviewSheetId = reviewSheetId;
+	}
+	public String getJiraNumber() {
+		return JiraNumber;
+	}
+	public void setJiraNumber(String jiraNumber) {
+		JiraNumber = jiraNumber;
+	}
+	public String getDeveloperId() {
+		return developerId;
+	}
+	public void setDeveloperId(String developerId) {
+		this.developerId = developerId;
+	}
+	public String getReviewSheetType() {
+		return reviewSheetType;
+	}
+	public void setReviewSheetType(String reviewSheetType) {
+		this.reviewSheetType = reviewSheetType;
+	}
+	public String getReviewSheetDate() {
+		return reviewSheetDate;
+	}
+	public void setReviewSheetDate(String reviewSheetDate) {
+		this.reviewSheetDate = reviewSheetDate;
+	}
+	
+	
+}

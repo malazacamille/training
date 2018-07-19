@@ -1,0 +1,67 @@
+package com.twosuccess.bootcamp2018.action;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.opensymphony.xwork2.Action;
+import com.twosuccess.bootcamp2018.model.Employee;
+import com.twosuccess.bootcamp2018.model.ItemQuestion;
+import com.twosuccess.bootcamp2018.modules.EmployeeModule;
+import com.twosuccess.bootcamp2018.modules.ItemQuestionModule;
+import com.twosuccess.bootcamp2018.services.EmployeeService;
+import com.twosuccess.bootcamp2018.services.ItemQuestionService;
+
+public class WelcomeJSONAction {
+	
+	private static final long serialVersionUID = 1L;
+	private static final Logger logger = Logger.getLogger(WelcomeJSONAction.class);
+	private EmployeeService employeeService;
+	private ItemQuestionService itemQuestionService;
+	private Injector injector;
+	private Map<String, Employee> mapEmployee = new HashMap<String, Employee>();
+	private List<ItemQuestion> mapItemQuestion = new ArrayList< ItemQuestion>();
+	public WelcomeJSONAction() {
+		
+	}
+
+	public Map<String, Employee> getMapEmployee() {
+		return mapEmployee;
+	}
+	public void setMapEmployee(Map<String, Employee> mapEmployee) {
+		this.mapEmployee
+ = mapEmployee;
+	}
+
+	public List<ItemQuestion> getMapItemQuestion() {
+		return mapItemQuestion;
+	}
+
+	public void setMapItemQuestion(List<ItemQuestion> mapItemQuestion) {
+		this.mapItemQuestion = mapItemQuestion;
+	}
+
+	public String execute() {
+		logger.info("Welcome Page has been loaded");
+		
+		/*injector = Guice.createInjector(new EmployeeModule());
+		employeeService = injector.getInstance(EmployeeService.class);
+		for(Employee item : employeeService.selectAll()) {
+			mapEmployee.put(item.getEmployeeId(), item);
+		}*/
+		ItemQuestion itemQuestion = new ItemQuestion();
+		itemQuestion.setItemGroupNumber(2);
+		injector = Guice.createInjector(new ItemQuestionModule());
+		itemQuestionService = injector.getInstance(ItemQuestionService.class);
+		for(ItemQuestion item : itemQuestionService.selectAll(itemQuestion.getItemGroupNumber())) {
+			mapItemQuestion.add(item);
+		}
+		
+		return Action.SUCCESS;
+	}
+}

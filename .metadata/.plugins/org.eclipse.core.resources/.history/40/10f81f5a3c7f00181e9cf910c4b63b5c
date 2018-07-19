@@ -1,0 +1,14 @@
+package idv.camille;
+
+public class MyMain {
+	public static void main(String[] args) {
+		
+			
+		BService bservice = new BService(IfAServiceEnum.AAService.getService())	;
+		bservice.test();
+		
+		CService cservice = new CService();
+		cservice.setAService(IfAServiceEnum.AService.getService());
+		cservice.exec();
+	}
+}

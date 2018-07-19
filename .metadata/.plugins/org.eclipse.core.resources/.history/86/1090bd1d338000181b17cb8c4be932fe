@@ -1,0 +1,9 @@
+package com.training.model;
+
+public class SearchCriteria {
+
+	String username;
+	String email;
+
+	//getters and setters
+}

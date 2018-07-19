@@ -1,0 +1,18 @@
+package com.twosuccess.bootcamp2018.services;
+
+import com.google.inject.Inject;
+import com.twosuccess.bootcamp2018.dao.EmployeeDAO;
+import com.twosuccess.bootcamp2018.dao.LoginDAO;
+
+public class LoginService {
+	private LoginDAO loginDAO;
+	
+	@Inject
+	public LoginService(LoginDAO loginDAO) {
+		this.loginDAO = loginDAO;
+	}
+	
+	public boolean validate(String userName, String password) {
+		return loginDAO.validate(userName, password);
+	}
+}

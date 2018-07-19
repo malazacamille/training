@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="LaunchTerminalSettingsDialog">
+		<item value="SSH Terminal" key="terminalLabel"/>
+		<section name="SettingsPanelControl">
+			<section name="SSH Terminal">
+				<item value="192.168.0.103" key="lastHost"/>
+				<list key="hosts">
+					<item value="192.168.0.105|ssh.keep_alive:300:ip.port:22:ip.host:192.168.0.105:savePassword:false:ssh.user:camille:encoding:null:timeout:0:saveUser:true"/>
+					<item value="192.168.0.103|ssh.keep_alive:300:ip.port:22:ip.host:192.168.0.103:ssh.user:edmar:savePassword:false:encoding:null:timeout:0:saveUser:true"/>
+				</list>
+			</section>
+			<section name="Git Bash">
+			</section>
+		</section>
+	</section>
+</section>

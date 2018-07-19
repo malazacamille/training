@@ -1,0 +1,20 @@
+package idv.camille;
+
+public class MyConsumer extends Thread{
+
+	private String str;
+	
+	MyConsumer(String info){
+		str = info;
+	}
+	
+	public void run() {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(str);
+	}
+}

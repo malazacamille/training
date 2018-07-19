@@ -1,0 +1,25 @@
+package idv.camille;
+
+public class AServiceFactory {
+	
+	private static IfAService service = null;
+	
+	
+	
+	private AServiceFactory() {
+		
+	}
+	
+	public static IfAService getInstance() {
+		
+		if(service == null) {
+			synchronized(AServiceFactory.class) {
+				if(service == null) {
+					service = new AService();
+				}
+			}
+		}
+		return new AService();
+	}
+	
+}

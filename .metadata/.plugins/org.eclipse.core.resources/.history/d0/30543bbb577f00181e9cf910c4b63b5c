@@ -1,0 +1,19 @@
+package idv.camille;
+
+public class TransportationFactory {
+
+	 private static IfTransportation jeep = null;
+	 
+	 private TransportationFactory(){
+		 
+	 }
+	 
+	 //Singleton
+	 public static IfTransportation getInstance(){
+	        if(jeep == null){
+	        	jeep = new Jeep();
+	        }
+	        return jeep;
+	    }
+	
+}

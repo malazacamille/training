@@ -1,0 +1,9 @@
+package com.twosuccess.bootcamp2018.model;
+
+public class ItemGroup {
+	String ItemGroupId;
+	int ItemGroupNo;
+	String ItemGroupName;
+	
+	
+}

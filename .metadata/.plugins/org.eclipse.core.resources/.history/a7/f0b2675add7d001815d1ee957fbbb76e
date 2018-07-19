@@ -1,0 +1,74 @@
+package com.twosuccess.bootcamp2018.action;
+
+import org.apache.log4j.Logger;
+
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.twosuccess.bootcamp2018.model.Employee;
+import com.twosuccess.bootcamp2018.modules.EmployeeModule;
+import com.twosuccess.bootcamp2018.services.EmployeeService;
+
+public class AddEmployeeAction {
+
+	//Get a logger
+	private static final Logger logger = Logger.getLogger(AddEmployeeAction.class);
+	
+	private String employeeName;
+	private String address;
+	private String city;
+	private String country;
+	private String departmentId;
+	private EmployeeService employeeService;
+	private Injector injector;
+	
+	public String getEmployeeName() {
+		return employeeName;
+	}
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getDepartmentId() {
+		return departmentId;
+	}
+	public void setDepartmentId(String departmentId) {
+		this.departmentId = departmentId;
+	}
+	
+	public String execute() {
+		
+		//logs debug
+				if(logger.isDebugEnabled()){
+					logger.debug("execute()!");
+				}
+				
+	   //logs exception
+		      logger.error("This is Error message", new Exception("Testing"));
+		
+		injector = Guice.createInjector(new EmployeeModule());
+		employeeService = injector.getInstance(EmployeeService.class);
+		Employee newEmployee = new Employee(employeeName, address, city, country, departmentId);
+		employeeService.insert(newEmployee);
+		return "SUCCESS";
+
+	}
+	
+	
+}

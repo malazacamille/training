@@ -1,0 +1,5 @@
+package com.training.spring.servlet;
+
+public class MyWebInitializer {
+
+}

@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+.header  {
+	text-align: center;
+}
+
+body {
+	background-color: #9aa899;
+}
+
+h1 {
+	font-family: "Verdana";
+	font-weight: bold;
+	color: #ffffff;
+}
+
+label[for="textField"] {
+	color: red;
+	font-family: "Verdana";
+	font-weight: bold;
+	color: #ffffff;
+}
+
+label[for="username"] {
+	color: red;
+	font-family: "Verdana";
+	font-weight: bold;
+	color: #ffffff;
+}
+
+label[for="password"] {
+	color: red;
+	font-family: "Verdana";
+	font-weight: bold;
+	color: #ffffff;
+}

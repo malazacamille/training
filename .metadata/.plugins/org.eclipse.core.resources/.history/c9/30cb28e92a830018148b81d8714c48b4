@@ -1,0 +1,18 @@
+
+public abstract class Decorator implements Cars{
+	
+	
+	protected Cars decoratedCars;
+
+	   public Decorator(Cars decoratedCars){
+	      this.decoratedCars = decoratedCars;
+	   }
+
+	@Override
+	public void drive() {
+		decoratedCars.drive();
+	}
+	
+	
+
+}

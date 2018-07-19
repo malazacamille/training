@@ -1,0 +1,29 @@
+package idv.camille;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Timer;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+public class Sample {
+	
+	public static void main (String [] args) {
+		
+		ScheduledExecutorService scheduler =
+			     Executors.newScheduledThreadPool(1);
+     
+		Runnable task = new Runnable() {
+            public void run() {
+                System.out.println("Hi!");
+            }
+        };
+ 
+        int delay = 16;
+        scheduler.schedule(task, delay, TimeUnit.SECONDS);
+        scheduler.shutdown();
+	}
+	
+	
+}

@@ -1,0 +1,15 @@
+package com.training.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Service;
+
+import com.training.bean.Employee;
+
+@Service
+public interface EmployeeMapper {
+
+	
+	public List<Employee> selectAll();
+}

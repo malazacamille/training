@@ -1,0 +1,11 @@
+package idv.camille;
+
+public class AAService implements IfAService {
+
+	@Override
+	public void execute() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

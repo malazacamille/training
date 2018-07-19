@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Employee">
+	<resultMap id="result" type="Employee">
+		<result property="employeeId" column="EmployeeID"></result>
+		<result property="employeeName" column="EmployeeName"></result>
+		<result property="address" column="Address"></result>
+		<result property="city" column="City"></result>
+		<result property="country" column="Country"></result>
+		<result property="departmentId" column="DepartmentID"></result>
+		<result property="status" column="Status"></result>
+	</resultMap>
+	
+	<select id="selectAll" resultMap="result">
+		SELECT * FROM Employee WHERE Status = 'A' OR Status = 'P';
+	</select>
+	
+	<select id="selectById" parameterType="int" resultMap="result">
+		SELECT * FROM Employee WHERE EmployeeID = #{employeeId};
+	</select>
+	
+	<select id="selectByDepartment" parameterType="String" resultMap="result">
+		SELECT * FROM Employee WHERE DepartmentID = #{departmentId};
+	</select>
+	
+	<insert id="insert" parameterType="Employee" useGeneratedKeys="true" keyProperty="employeeId">
+		INSERT INTO Employee (EmployeeId, EmployeeName, Address, City, Country, DepartmentID, Status) VALUES (#{employeeId}, #{employeeName},
+			#{address},#{city},#{country},#{departmentId},'P');
+	</insert>
+	
+	<update id="update" parameterType="Employee">
+		UPDATE Employee
+		SET EmployeeName = #{employeeName},
+		Address = #{address},
+		City = #{city},
+		Country = #{country},
+		DepartmentID = #{departmentId},
+		Status = #{status}
+		WHERE EmployeeID = #{employeeId};
+	</update>
+	
+	<update id="deactivate" parameterType="int">
+		UPDATE Employee
+		SET Status = 'D'
+		WHERE EmployeeID = #{employeeId};
+	</update>
+	
+	<update id="activate" parameterType="int">
+		UPDATE Employee
+		SET Status = 'A'
+		WHERE EmployeeID = #{employeeId};
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM Employee WHERE EmployeeID = #{employeeId};
+	</delete>
+	
+	<resultMap id="resultDetailed" type="EmployeeDepartment">
+		<result property="employeeId" column="EmployeeID"></result>
+		<result property="employeeName" column="EmployeeName"></result>
+		<result property="address" column="Address"></result>
+		<result property="city" column="City"></result>
+		<result property="country" column="Country"></result>
+		<result property="departmentId" column="DepartmentID"></result>
+		<result property="departmentName" column="DepartmentName"></result>
+	</resultMap>
+	
+	<select id="selectAllWithDept" resultMap="resultDetailed">
+		SELECT
+			e.EmployeeID as 'EmployeeID',
+			e.EmployeeName as 'EmployeeName',
+			e.Address as 'Address',
+			e.City as 'City',
+			e.Country as 'Country',
+			d.DepartmentID as 'DepartmentID',
+			d.DepartmentName as 'DepartmentName'
+		FROM Employee e
+		INNER JOIN Department d
+		ON e.DepartmentID = d.DepartmentID
+		ORDER BY e.EmployeeID ASC;
+	</select>
+	
+	<select id="selectByIdWithDept" parameterType="int" resultMap="resultDetailed">
+		SELECT
+			e.EmployeeID as 'EmployeeID',
+			e.EmployeeName as 'EmployeeName',
+			e.Address as 'Address',
+			e.City as 'City',
+			e.Country as 'Country',
+			d.DepartmentID as 'DepartmentID',
+			d.DepartmentName as 'DepartmentName'
+		FROM Employee e
+		INNER JOIN Department d
+		ON e.DepartmentID = d.DepartmentID
+		WHERE e.EmployeeID = #{employeeId}
+		ORDER BY e.EmployeeID ASC;
+	</select>
+	
+	<select id="selectByDepartmentDetailed" parameterType="String" resultMap="resultDetailed">
+		SELECT
+			e.EmployeeID as 'EmployeeID',
+			e.EmployeeName as 'EmployeeName',
+			e.Address as 'Address',
+			e.City as 'City',
+			e.Country as 'Country',
+			d.DepartmentID as 'DepartmentID',
+			d.DepartmentName as 'DepartmentName'
+		FROM Employee e
+		INNER JOIN Department d
+		ON e.DepartmentID = d.DepartmentID
+		
+		WHERE e.DepartmentID = #{departmentId}
+		ORDER BY e.EmployeeID ASC;
+	</select>
+	
+</mapper>

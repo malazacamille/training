@@ -1,0 +1,29 @@
+package com.twosuccess.bootcamp2018.services;
+
+import java.util.List;
+
+import com.google.inject.Inject;
+import com.twosuccess.bootcamp2018.dao.QuestionDAO;
+import com.twosuccess.bootcamp2018.model.ItemQuestion;
+
+public class ItemQuestionService {
+	
+	private QuestionDAO questionDAO;
+
+	@Inject
+	public ItemQuestionService(QuestionDAO questionDAO) {
+		this.questionDAO = questionDAO;
+	}
+	
+	public QuestionDAO getQuestionDAO() {
+		return questionDAO;
+	}
+
+	public void setQuestionDAO(QuestionDAO questionDAO) {
+		this.questionDAO = questionDAO;
+	}
+	
+	public List<ItemQuestion> selectAll(int itemGroupNumber) {
+		return questionDAO.selectAll(itemGroupNumber);
+	}
+}

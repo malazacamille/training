@@ -1,0 +1,10 @@
+package com.training.bean;
+
+public class LogHistory {
+
+    private String logHistoryId;
+    private String employeeId;
+    private String departmentId;
+    private String lastLoginDate;
+    private String creationDate;
+}

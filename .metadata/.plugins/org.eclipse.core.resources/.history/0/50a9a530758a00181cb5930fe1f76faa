@@ -1,0 +1,31 @@
+package com.training.model;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+public class MainProcess {
+	public static void main(String [] args) throws Exception {
+		
+		List<Integer> val = new LinkedList<Integer>();
+		for (int i=1; i <= 52; i++) {
+			val.add(i);
+		}
+		
+		System.out.println(val);
+		System.out.println(val.get(0));
+		System.out.println(val.get(1));
+		for (int i=0; i<26; i++) {
+			
+			Integer n = val.get(i);
+			System.out.println(n);
+			System.out.println(val);
+			val.remove(i);
+		}
+		
+		System.out.println(val);
+		
+		}
+}

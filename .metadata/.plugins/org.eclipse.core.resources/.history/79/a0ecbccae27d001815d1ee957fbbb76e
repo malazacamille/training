@@ -1,0 +1,58 @@
+package com.twosuccess.bootcamp2018.action;
+
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.twosuccess.bootcamp2018.model.Employee;
+import com.twosuccess.bootcamp2018.modules.EmployeeModule;
+import com.twosuccess.bootcamp2018.services.EmployeeService;
+
+public class WelcomeUserAction {
+	
+	//Get a logger
+	private static final Logger logger = Logger.getLogger(AddEmployeeAction.class);
+	
+	
+	private String username;
+	private String password;
+	private EmployeeService employeeService;
+	private Injector injector;
+	private List<Employee> listEmployee;
+	 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public List<Employee> getListEmployee() {
+		return listEmployee;
+	}
+
+	public void setListEmployee(List<Employee> listEmployee) {
+		this.listEmployee = listEmployee;
+	}
+
+	// all struts logic here
+	public String execute() {
+		injector = Guice.createInjector(new EmployeeModule());
+		employeeService = injector.getInstance(EmployeeService.class);
+		listEmployee = employeeService.selectAll();
+		return "SUCCESS";
+
+	}
+	
+}

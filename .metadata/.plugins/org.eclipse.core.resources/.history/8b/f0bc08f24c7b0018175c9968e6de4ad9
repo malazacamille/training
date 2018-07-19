@@ -1,0 +1,16 @@
+package idv.camille;
+
+public class MyData {
+
+	private static int count = 0; // use static to have different instance but  have one space in the memory
+
+	public static int getCount() {
+		return MyData.count;
+	}
+
+	public static void count() {
+		MyData.count = count++;
+	}
+	
+	
+}

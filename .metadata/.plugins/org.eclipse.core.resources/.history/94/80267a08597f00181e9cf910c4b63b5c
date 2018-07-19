@@ -1,0 +1,15 @@
+package idv.camille;
+
+public class FirstService {
+	
+	private static IfTransportation jeep;
+	
+	//interface injection
+		static {
+			aservice =AServiceFactory.getInstance();
+		}
+		
+	public void test() {
+			aservice.execute();
+	}
+}

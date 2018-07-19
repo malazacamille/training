@@ -1,0 +1,41 @@
+package idv.camille;
+
+public class TransportationFactory {
+
+	 private static IfTransportation jeep = null;
+	 
+	 private TransportationFactory(){
+		 
+	 }
+	 
+	 //Singleton
+	//singleton pattern
+		public static IfTransportation getInstance() {
+			//double-checked locking
+			if(aservice == null) {
+				synchronized(AServiceFactory.class) {
+					if(aservice == null) {
+						aservice = new AService();
+					}
+				}
+			}
+			
+			if(aaservice == null) {
+				synchronized(AServiceFactory.class) {
+					if(aaservice == null) {
+						aaservice = new AService();
+					}
+				}
+			}
+			
+			if(enu.equals(IfAServiceEnum.AService)) {
+				return aservice;
+			}
+			
+			if(enu.equals(IfAServiceEnum.AAService)) {
+				return aaservice;
+			}
+			return null;
+		}
+	
+}

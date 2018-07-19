@@ -1,0 +1,43 @@
+package idv.camille;
+
+public class TransportationFactory {
+
+	 private static IfTransportation jeep = null;
+	 private static IfTransportation train = null;
+	 private static IfTransportation van = null;
+	 
+	 private TransportationFactory(){
+		 
+	 }
+	 
+	 //Singleton
+	//singleton pattern
+		public static IfTransportation getInstance() {
+			//double-checked locking
+			if(jeep == null) {
+				synchronized(TransportationFactory.class) {
+					if(jeep == null) {
+						jeep = new Jeep();
+					}
+				}
+			}
+			
+			if(train == null) {
+				synchronized(TransportationFactory.class) {
+					if(train == null) {
+						train = new Jeep();
+					}
+				}
+			}
+			
+			if(jeep == null) {
+				synchronized(TransportationFactory.class) {
+					if(jeep == null) {
+						jeep = new Jeep();
+					}
+				}
+			}
+			return null;
+		}
+	
+}

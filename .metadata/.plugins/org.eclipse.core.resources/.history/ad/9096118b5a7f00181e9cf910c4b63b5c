@@ -1,0 +1,11 @@
+package idv.camille;
+
+public class MainClass {
+	
+	public static void main (String [] args) {
+		FirstService firstservice = 
+				new FirstService()	;
+		firstservice.test();
+	}
+	
+}

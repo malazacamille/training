@@ -1,0 +1,21 @@
+package idv.camille;
+
+public class CService {
+	
+	private static IfAService aservice;
+
+	//interface injection
+/*	static {
+		aservice =AServiceFactory.getInstance();
+	}*/
+	
+	public void setAService(IfAService aservice) {
+		this.aservice = aservice;
+	}
+	
+	public void exec() {
+		
+		aservice.execute();
+
+	}
+}

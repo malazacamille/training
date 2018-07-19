@@ -1,0 +1,14 @@
+package idv.camille;
+
+public class secondService {
+private static IfTransportation van;
+	
+	//interface injection
+		static {
+			van =TransportationFactory.getInstance();
+		}
+		
+	public void test() {
+			van.travel();
+	}
+}

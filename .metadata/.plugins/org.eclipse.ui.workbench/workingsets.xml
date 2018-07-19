@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1530840880851_1" label="AllenTraning" name="AllenTraning">
+<item elementID="=MySpring" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=MyProject" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=MyDemo" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=MySample" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1530841183987_3" label="OsoTrainingStruts" name="OsoTrainingStruts">
+<item elementID="=GuiceWebProject" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=GoogleJuice" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Struts2Sample" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=GuiceWebProject2" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1530841261243_5" label="Spring" name="Spring">
+<item elementID="=SpringMVCAjax" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=HelloWorld" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Servers" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/MavenSpringHibernateMysql" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1530841373099_7" label="JemxFidelTraining" name="JemxFidelTraining">
+<item elementID="=JunitSample" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=CRUD" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1529923558268_0" label="Window Working Set" name="Aggregate for window 1529923558267"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1530841193523_4" label="Multiple Working Sets" name="Aggregate:AllenTraning:OsoTrainingStruts:">
+<workingSet IMemento.internal.id="AllenTraning"/>
+<workingSet IMemento.internal.id="OsoTrainingStruts"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1530841272995_6" label="Multiple Working Sets" name="Aggregate:AllenTraning:OsoTrainingStruts:Spring:">
+<workingSet IMemento.internal.id="AllenTraning"/>
+<workingSet IMemento.internal.id="OsoTrainingStruts"/>
+<workingSet IMemento.internal.id="Spring"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1530841382043_8" label="Multiple Working Sets" name="Aggregate:AllenTraning:JemxFidelTraining:OsoTrainingStruts:Spring:">
+<workingSet IMemento.internal.id="AllenTraning"/>
+<workingSet IMemento.internal.id="JemxFidelTraining"/>
+<workingSet IMemento.internal.id="OsoTrainingStruts"/>
+<workingSet IMemento.internal.id="Spring"/>
+</workingSet>
+<mruList name="AllenTraning"/>
+</workingSetManager>

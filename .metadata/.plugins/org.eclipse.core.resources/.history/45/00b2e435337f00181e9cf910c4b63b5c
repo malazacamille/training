@@ -1,0 +1,8 @@
+package idv.camille;
+
+public class AService {
+
+		public void execute() {
+			
+		}
+}

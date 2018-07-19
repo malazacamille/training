@@ -1,0 +1,9 @@
+package com.training.spring.web.model;
+
+public class EmployeeJsonRespone {
+	   private Employee employee;
+	   private boolean validated;
+	   private Map<String, String> errorMessages;
+
+	   // Getter and Setter methods
+	}

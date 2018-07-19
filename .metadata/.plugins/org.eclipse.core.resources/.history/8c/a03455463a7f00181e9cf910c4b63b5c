@@ -1,0 +1,29 @@
+package idv.camille;
+
+public class AServiceFactory {
+	
+	private static IfAService service = null;
+	
+	
+	
+	private AServiceFactory() {
+		
+	}
+	
+	
+	//singleton pattern
+	public static IfAService getInstance() {
+		//double-checked locking
+		if(service == null) {
+			synchronized(AServiceFactory.class) {
+				if(service == null) {
+					service = new AService();
+				}
+			}
+		}
+		return service;
+	}
+	
+	//prototype pattern
+	
+}
